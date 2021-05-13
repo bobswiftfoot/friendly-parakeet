@@ -73,7 +73,13 @@ function casePrompts()
 //Prompt for character types
 function characterPrompt(type)
 {
-  var responce = window.prompt("Do you want " + type + " characters? (Yes/No)").toLowerCase();
+  var responce = window.prompt("Do you want " + type + " characters? (Yes/No)");
+  if(!responce)
+  {
+    window.alert("Please enter a valid input.")
+    return characterPrompt(type);
+  }
+  responce = responce.toLowerCase();
 
   switch(responce)
   {
