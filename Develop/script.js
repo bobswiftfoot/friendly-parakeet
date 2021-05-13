@@ -1,17 +1,44 @@
 //TODO
-//Arrays of lowercase/upper/numbers/special chars
-//Ask for length between 8-128
-//prompt for each of string arrays
-//concat strings togethers as prompts go on
-//check for no on all prompts and start over
-//loop through length and random on the string
+var lowerCaseCharacters = "abcdefghijklmnopqrstuvwxyz";
+var upperCaseCharacters = "ABCDEFGHIJKLMNOPQURSTUVWXYZ";
+var numericalCharacters = "123456789";
+var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
+
+var lowerCase = false;
+var upperCase = false;
+var numericalCase = false;
+var specialCase = false;
+
 function generatePassword()
 {
   var passwordLength = lengthPrompt();
-  var lowerCase = characterPrompt("lowerCase");
-  var upperCase = characterPrompt("upperCase");
-  var numericalCase = characterPrompt("numerical");
-  var specialCase = characterPrompt("special");
+  casePrompts();
+
+  var validCharacters = "";
+  if(lowerCase)
+  {
+    validCharacters += lowerCaseCharacters;
+  }
+  if(upperCase)
+  {
+    validCharacters += upperCaseCharacters;
+  }
+  if(numericalCase)
+  {
+    validCharacters += numericalCharacters;
+  }
+  if(specialCase)
+  {
+    validCharacters += specialCharacters;
+  }
+
+  var password = "";
+  for(var i = 0; i < passwordLength; i++)
+  {
+    password += validCharacters[Math.floor(Math.random() * (validCharacters.length))];
+  }
+
+  return password;
 }
 
 function lengthPrompt()
@@ -24,6 +51,20 @@ function lengthPrompt()
   }
   window.alert("Please enter a valid input.")
   return lengthPrompt();
+}
+
+function casePrompts()
+{
+  lowerCase = characterPrompt("lowerCase");
+  upperCase = characterPrompt("upperCase");
+  numericalCase = characterPrompt("numerical");
+  specialCase = characterPrompt("special");
+
+  if(!lowerCase && !upperCase && !numericalCase && !specialCase)
+  {
+    window.alert("At least one character set must be chosen.")
+    return casePrompts();
+  }
 }
 
 function characterPrompt(type)
