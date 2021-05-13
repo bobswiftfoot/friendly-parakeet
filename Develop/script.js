@@ -1,9 +1,10 @@
-//TODO
+//List of all valid characters
 var lowerCaseCharacters = "abcdefghijklmnopqrstuvwxyz";
 var upperCaseCharacters = "ABCDEFGHIJKLMNOPQURSTUVWXYZ";
 var numericalCharacters = "123456789";
 var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~";
 
+//Booleans for case prompts
 var lowerCase = false;
 var upperCase = false;
 var numericalCase = false;
@@ -41,6 +42,7 @@ function generatePassword()
   return password;
 }
 
+//Get the length the user wants
 function lengthPrompt()
 {
   var length = window.prompt("How long do you want your password? (Enter # between 8-128)");
@@ -53,6 +55,7 @@ function lengthPrompt()
   return lengthPrompt();
 }
 
+//Prompt for all 4 cases
 function casePrompts()
 {
   lowerCase = characterPrompt("lowerCase");
@@ -67,6 +70,7 @@ function casePrompts()
   }
 }
 
+//Prompt for character types
 function characterPrompt(type)
 {
   var responce = window.prompt("Do you want " + type + " characters? (Yes/No)").toLowerCase();
