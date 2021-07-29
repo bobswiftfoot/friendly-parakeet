@@ -1,4 +1,4 @@
-# Password Generator Starter Code
+# Password Generator
 This will generate a password for you based on the user prompts:
 1. Length between 8 and 128
 2. Using lower case characters
